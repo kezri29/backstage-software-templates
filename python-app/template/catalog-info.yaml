@@ -4,9 +4,9 @@ metadata:
   name: ${{values.app_name}}
   description: A python application as a test component named - ${{values.app_name}}
   annotations:
-    github.com/project-slug: kezri29/${{values.app_name}}
+    github.com/project-slug: kezri-29/${{values.app_name}}
     backstage.io/techdocs-ref: dir:.
-    scorecard/jsonDataUrl: https://raw.githubusercontent.com/kezri29/${{values.app_name}}/refs/heads/main/component-score.json
+    scorecard/jsonDataUrl: https://raw.githubusercontent.com/kezri-29/${{values.app_name}}/refs/heads/main/component-score.json
 spec:
   type: service
   owner: development
