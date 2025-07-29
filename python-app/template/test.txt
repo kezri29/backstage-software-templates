@@ -1,4 +1,0 @@
-This is a testing file to check whether the  steps are working properly
-
-app name : ${{values.app_name}}
-app  env : ${{values.app_env}}

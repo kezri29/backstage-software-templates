@@ -2,9 +2,11 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: ${{values.app_name}}
-  description: A python application as a test component named ${{values.app_name}}
+  description: A python application as a test component named - ${{values.app_name}}
   annotations:
     github.com/project-slug: kezri29/${{values.app_name}}
+    backstage.io/techdocs-ref: dir:.
+    scorecard/jsonDataUrl: https://raw.githubusercontent.com/kezri29/${{values.app_name}}/refs/heads/main/component-score.json
 spec:
   type: service
   owner: development

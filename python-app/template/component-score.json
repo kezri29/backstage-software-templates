@@ -1,0 +1,21 @@
+{
+  "name": "${{values.app_name}}",
+  "description": "Scorecard evaluation for ${{values.app_name}}",
+  "items": [
+    {
+      "title": "Documentation",
+      "score": 80,
+      "description": "Technical documentation is present in TechDocs."
+    },
+    {
+      "title": "CI/CD Pipeline",
+      "score": 90,
+      "description": "GitHub Actions are configured."
+    },
+    {
+      "title": "Monitoring",
+      "score": 60,
+      "description": "Basic monitoring alerts in place."
+    }
+  ]
+}
