@@ -8,8 +8,8 @@ This document provides information about the Python application, including its e
 
 The application exposes the following endpoints:
 
--   `python-app.test.com/api/v1/details`
--   `python-app.test.com/api/v1/healthz`
+-   `${{values.app_name}}-${{values.app_env}}.test.com/api/v1/details`
+-   `${{values.app_name}}-${{values.app_env}}.test.com/api/v1/healthz`
 
 ## Accessing the App
 
