@@ -1,4 +1,4 @@
-name: ${{values.app_name}} - cicd
+name: ${{values.app_name}}-cicd
 
 on:
   push:
@@ -47,7 +47,7 @@ jobs:
         run: |
           echo ${{ '${{needs.ci.outputs.commit_id}}' }} 
           pip install yq
-          yq -Yi '.image.tag = "${{ '${{needs.ci.outputs.commit_id}}' }}"' charts/${{values.app_name}}/values-${{values.env}}.yaml
+          yq -Yi '.image.tag = "${{ '${{needs.ci.outputs.commit_id}}' }}"' charts/${{values.app_name}}/values-${{values.app_env}}.yaml
 
     # pushing changes to the github repo before syncing the argocd pipeline
       - name: Commit changes
