@@ -1,21 +1,148 @@
 {
-  "name": "${{values.app_name}}",
-  "description": "Scorecard evaluation for ${{values.app_name}}",
-  "items": [
+  "entityRef": {
+    "kind": "component",
+    "name": "${{values.app_name}}"
+  },
+  "generatedDateTimeUtc": "2024-01-15 10:00",
+  "scorePercent": 76,
+  "scoreSuccess": "good",
+  "areaScores": [
     {
-      "title": "Documentation",
-      "score": 80,
-      "description": "Technical documentation is present in TechDocs."
+      "id": 1001,
+      "title": "Code Quality",
+      "scorePercent": 80,
+      "scoreSuccess": "good",
+      "scoreEntries": [
+        {
+          "id": 1,
+          "title": "Documentation",
+          "scorePercent": 80,
+          "scoreSuccess": "good",
+          "howToScore": "Technical documentation should be present and accessible.",
+          "scoreChoices": [
+            {
+              "Well documented with TechDocs": 100
+            },
+            {
+              "Basic documentation present": 80
+            },
+            {
+              "Minimal documentation": 40
+            },
+            {
+              "No documentation": 0
+            }
+          ],
+          "details": "Technical documentation is present in TechDocs and covers basic functionality."
+        },
+        {
+          "id": 2,
+          "title": "Static Code Analysis",
+          "scorePercent": 70,
+          "scoreSuccess": "good",
+          "howToScore": "Code should be analyzed for quality and security issues.",
+          "scoreChoices": [
+            {
+              "SonarCloud actively used with PR gates": 100
+            },
+            {
+              "Basic static analysis implemented": 70
+            },
+            {
+              "Manual code reviews only": 40
+            },
+            {
+              "No static analysis": 0
+            }
+          ],
+          "details": "Basic static analysis is implemented but could be enhanced with automated PR gates."
+        }
+      ]
     },
     {
-      "title": "CI/CD Pipeline",
-      "score": 90,
-      "description": "GitHub Actions are configured."
+      "id": 1002,
+      "title": "Operations",
+      "scorePercent": 85,
+      "scoreSuccess": "good",
+      "scoreEntries": [
+        {
+          "id": 3,
+          "title": "CI/CD Pipeline",
+          "scorePercent": 90,
+          "scoreSuccess": "excellent",
+          "howToScore": "Automated build and deployment pipeline should be in place.",
+          "scoreChoices": [
+            {
+              "Full CI/CD with automated testing": 100
+            },
+            {
+              "CI/CD pipeline configured": 90
+            },
+            {
+              "Basic CI only": 50
+            },
+            {
+              "Manual deployment": 0
+            }
+          ],
+          "details": "GitHub Actions are configured for automated builds and deployments."
+        },
+        {
+          "id": 4,
+          "title": "Health Checks",
+          "scorePercent": 80,
+          "scoreSuccess": "good",
+          "howToScore": "Application should provide health check endpoints.",
+          "scoreChecks": [
+            {
+              "livenessProbe": 25
+            },
+            {
+              "readinessProbe": 25
+            },
+            {
+              "Basic health endpoint": 25
+            },
+            {
+              "Detailed health info": 25
+            },
+            {
+              "None of the above": 0
+            }
+          ],
+          "details": "Basic health checks are implemented with room for improvement."
+        }
+      ]
     },
     {
+      "id": 1003,
       "title": "Monitoring",
-      "score": 60,
-      "description": "Basic monitoring alerts in place."
+      "scorePercent": 60,
+      "scoreSuccess": "warning",
+      "scoreEntries": [
+        {
+          "id": 5,
+          "title": "Application Monitoring",
+          "scorePercent": 60,
+          "scoreSuccess": "warning",
+          "howToScore": "Application should have monitoring and alerting configured.",
+          "scoreChoices": [
+            {
+              "Comprehensive monitoring with alerts": 100
+            },
+            {
+              "Basic monitoring alerts": 60
+            },
+            {
+              "Logging only": 30
+            },
+            {
+              "No monitoring": 0
+            }
+          ],
+          "details": "Basic monitoring alerts are in place but comprehensive monitoring is needed."
+        }
+      ]
     }
   ]
 }
