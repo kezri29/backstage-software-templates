@@ -62,10 +62,37 @@ jobs:
           curl -ksSL -o argocd http://argocd-server.argocd/download/argocd-linux-amd64
           chmod +x argocd
           sudo mv ./argocd /usr/local/bin/argocd
+  
+    # Login to the ArgoCD server  
+      - name: argocd login
+        shell: bash
+        run: |
+          argocd login argocd-server.argocd \
+            --insecure  \
+            --grpc-web \
+            --username admin \
+            --password  ${{ '${{ secrets.ARGOCD_PASSWORD }}' }}
+
+    # In order to create a repo of the new github repo and app create it in ArgoCD
+      - name: Ensure argocd repo add and sync
+        shell: bash
+        run: |
+          repo=https://github.com/kezri-29/${{values.app_name}}.git
+          argocd repo list | grep -q $repo || argocd repo add $repo
+
+          argocd app get ${{values.app_name}} || argocd app create ${{values.app_name}} \
+            --repo $repo \
+            --path charts/${{values.app_name}} \
+            --dest-namespace ${{values.app_env}} \
+            --dest-server https://kubernetes.default.svc \
+            --values values-${{values.app_env}}.yaml \
+            --revision main \
+            --sync-policy manual \
+            --sync-option CreateNamespace=true
     
-    # this needs will create a dependency on the ci job. (like after ci cd must be performed)
+    # Syncing the ArgoCD application to deploy the changes
       - name: ArgoCD app sync
         shell: bash
         run: |
-          argocd login argocd-server.argocd --insecure --grpc-web --username admin --password ${{ '${{ secrets.ARGOCD_PASSWORD }}' }}
           argocd app sync ${{values.app_name}}
+          argocd app wait ${{values.app_name}} --timeout 180
