@@ -12,7 +12,7 @@ jobs:
   scorecard:
     runs-on: ubuntu-latest
     env:
-      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
     steps:
       - name: Checkout code
@@ -128,3 +128,4 @@ jobs:
           argocd app sync ${{values.app_name}}
 
           argocd app wait ${{values.app_name}} --timeout 180
+
