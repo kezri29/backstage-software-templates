@@ -7,40 +7,9 @@ on:
     branches:
       - main
 
-jobs:
-# scorecard automation script
-  scorecard:
-    runs-on: ubuntu-latest
-    env:
-      GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Clone Scorecard Automation Repo
-        run: |
-          git clone https://github.com/kezri29/backstage-scorecard-automation.git
-          cd backstage-scorecard-automation
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12.9'
-
-      - name: Install Dependencies
-        run: |
-          cd backstage-scorecard-automation
-          pip install -r requirements.txt
-
-      - name: Run Scorecard Automation
-        run: |
-          cd backstage-scorecard-automation
-          python graph.py --repo-url https://github.com/kezri-29/${{values.app_name}}
-          
+jobs:         
 # continuous integration job
   ci:
-    needs: scorecard
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -128,4 +97,5 @@ jobs:
           argocd app sync ${{values.app_name}}
 
           argocd app wait ${{values.app_name}} --timeout 180
+
 
