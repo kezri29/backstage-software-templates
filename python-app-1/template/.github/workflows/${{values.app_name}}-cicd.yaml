@@ -11,10 +11,10 @@ jobs:
   sonar-analysis:
     runs-on: ubuntu-latest
     env:
-      SONAR_TOKEN_GLOBAL: ${{ secrets.SONAR_TOKEN }}
-      SONAR_ORG_GLOBAL: ${{ secrets.SONAR_ORG }}
+      SONAR_TOKEN_GLOBAL:   ${{ '${{ secrets.SONAR_TOKEN }}' }}
+      SONAR_ORG_GLOBAL:  ${{ '${{ secrets.SONAR_ORG }}' }}
       SONAR_PROJECT_NAME_GLOBAL: ${{ values.app_name }}
-      SONAR_PROJECT_KEY_GLOBAL: ${{ secrets.SONAR_ORG }}_${{ values.app_name }}
+      SONAR_PROJECT_KEY_GLOBAL: ${{ '${{ secrets.SONAR_ORG_GLOBAL }}' }}_${{ values.app_name }}
 
     steps:
       - name: Checkout repo
@@ -36,13 +36,14 @@ jobs:
 
       - name: Run SonarQube check & analysis
         env:
-          SONAR_TOKEN: ${{ env.SONAR_TOKEN_GLOBAL }}
-          SONAR_ORG: ${{ env.SONAR_ORG_GLOBAL }}
-          SONAR_PROJECT_NAME: ${{ env.SONAR_PROJECT_NAME_GLOBAL }}
-          SONAR_PROJECT_KEY: ${{ env.SONAR_PROJECT_KEY_GLOBAL }}
+          SONAR_TOKEN:  ${{ '${{ env.SONAR_TOKEN_GLOBAL }}' }}
+          SONAR_ORG: ${{ '${{ env.SONAR_ORG_GLOBAL }}' }}
+          SONAR_PROJECT_NAME: ${{ '${{ env.SONAR_PROJECT_NAME_GLOBAL }}' }}
+          SONAR_PROJECT_KEY: ${{ '${{ env.SONAR_PROJECT_KEY_GLOBAL }}' }}
         run: |
           cd backstage-scorecard-automation
           python3 check_and_create.py
+
 
 
 
