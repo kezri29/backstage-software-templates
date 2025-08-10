@@ -42,7 +42,8 @@ jobs:
           SONAR_PROJECT_KEY: ${{ env.SONAR_PROJECT_KEY_GLOBAL }}
         run: |
           cd backstage-scorecard-automation
-          python3 check_and_analyze.py
+          python3 check_and_create.py
+
 
 
 
