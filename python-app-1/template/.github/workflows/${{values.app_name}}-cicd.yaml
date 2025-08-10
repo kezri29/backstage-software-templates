@@ -34,9 +34,11 @@ jobs:
           SONAR_ORG: ${{ '${{ secrets.SONAR_ORG }}' }}
           SONAR_PROJECT_NAME: ${{ values.app_name }}
           SONAR_PROJECT_KEY: ${{ '${{ secrets.SONAR_ORG }}' }}_${{ values.app_name }}
+          SONAR_HOST_URL: "https://sonarcloud.io"
         run: |
           cd backstage-scorecard-automation
           python3 check_and_create.py
+
 
 
 
