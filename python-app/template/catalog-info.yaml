@@ -7,6 +7,7 @@ metadata:
     github.com/project-slug: kezri-29/${{values.app_name}}
     backstage.io/techdocs-ref: dir:.
     scorecard/jsonDataUrl: https://raw.githubusercontent.com/kezri-29/${{values.app_name}}/refs/heads/main/component-score.json
+    argocd/app-name: ${{values.app_name}}
 spec:
   type: service
   owner: development
